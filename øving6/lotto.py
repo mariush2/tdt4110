@@ -115,7 +115,7 @@ def random_main():
         amount_add = compList(guessed, add_nums)
 
         amount_won = won(amount_lotto, amount_add)
-        print("Du vant " +  str(amount_won) + "!")
+        # print("Du vant " +  str(amount_won) + "!")
         vunnet += amount_won
         brukt += 5
 

@@ -40,5 +40,5 @@ def areOthogonal(a,b):
 
 array = np.arange(1,16)
 new_array = np.transpose(array).reshape((5,3), order="F")
-# print(array)
-# print(new_array)
+print(array)
+print(new_array)
