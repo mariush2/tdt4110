@@ -1,0 +1,11 @@
+{
+  "people": {
+    "person0": {
+      "given_name": "Meme",
+      "surname": "Memeson",
+      "age": 42,
+      "gender": "Male",
+      "relationship_status": "lule"
+    }
+  }
+}
