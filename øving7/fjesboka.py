@@ -54,7 +54,6 @@ def add_data(user):
 def get_person(given_name, facebook):
     result = []
     given_name = given_name.lower()
-    print(facebook)
     for person in facebook.items():
         person = person[1]
         if(person["given_name"].lower() == given_name):
