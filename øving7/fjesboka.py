@@ -3,7 +3,7 @@ import os
 import json
 from dotmap import DotMap
 
-facebook = []
+facebook = {}
 
 def get_info(facebook):
     try:
@@ -11,8 +11,9 @@ def get_info(facebook):
 
         config = open(os.path.join(__location__, "full_list.json"), "r")
         config = json.load(config)
-        people = DotMap(config)
-        for person in people.items():
+        full_list = DotMap(config)
+        i = 0
+        for person in full_list.people.items():
             person = person[1]
             new_person = {}
             new_person["given_name"] = person.given_name
@@ -20,13 +21,13 @@ def get_info(facebook):
             new_person["age"] = person.age
             new_person["gender"] = person.gender
             new_person["relationship_status"] = person.relationship_status
-            facebook.append(new_person)
+            facebook["person" + str(i)] = new_person
+            i += 1
     except FileNotFoundError:
         print("File not found!")
         exit(1)
 
 
-#given_name surname age gender relationship_status
 def add_data(user):
     user = user.split(" ")
 
@@ -53,7 +54,9 @@ def add_data(user):
 def get_person(given_name, facebook):
     result = []
     given_name = given_name.lower()
-    for person in facebook:
+    print(facebook)
+    for person in facebook.items():
+        person = person[1]
         if(person["given_name"].lower() == given_name):
             result.append(person)
 
@@ -68,13 +71,13 @@ def main():
             print("Ok")
             break
 
-        facebook.append(add_data(new_user))
+        facebook["person" + str(len(facebook))] = (add_data(new_user))
 
     while True:
         search_user = input("Search for user: ")
         if(search_user.lower() == "done"):
             print("Ok")
-            exit_main(facebook)
+            save_list(facebook)
             break
 
         result = get_person(search_user, facebook)
@@ -85,13 +88,10 @@ def main():
                 print(result[i]["given_name"],result[i]["surname"], "is", result[i]["age"], "years old. Relationship status is", result[i]["relationship_status"])
 
 
-def exit_main(facebook):
+def save_list(facebook):
     __location__ = os.path.join(os.getcwd(), os.path.dirname(__file__))
     outfile = open(os.path.join(__location__, "full_list.json"), "w")
-    i = 0
-    for person in facebook:
-        output = json.dump({"person" + str(i): person}, outfile)
-        i += 1
+    output = json.dump({"people": facebook}, outfile, indent=0, check_circular=False)
 
 
 main()

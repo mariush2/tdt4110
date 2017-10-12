@@ -1,1 +1,32 @@
-{"person0": {"given_name": "Meme", "surname": "Memeson", "age": 42, "gender": "Male", "relationship_status": "lule"}}{"person1": {"given_name": "Hei", "surname": "Heison", "age": 23, "gender": "Male", "relationship_status": "Single"}}
+{
+  "people": {
+    "person0": {
+      "given_name": "Mark",
+      "surname": "Zuckerberg",
+      "age": 32,
+      "gender": "Male",
+      "relationship_status": "Married"
+    },
+    "person1": {
+      "given_name": "Therese",
+      "surname": "Johaug",
+      "age": 28,
+      "gender": "Female",
+      "relationship_status": "Complicated"
+    },
+    "person2": {
+      "given_name": "Mark",
+      "surname": "Wahlberg",
+      "age": 45,
+      "gender": "Male",
+      "relationship_status": "Married"
+    },
+    "person3": {
+      "given_name": "Siv",
+      "surname": "Jensen",
+      "age": 47,
+      "gender": "Female",
+      "relationship_status": "Single"
+    }
+  }
+}
