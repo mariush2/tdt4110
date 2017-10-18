@@ -16,9 +16,9 @@ def selection_sort(list):
     while not(sorted):
         biggest = 0
         sorted = True
-        for i in range(0, len(list) - 1):
-            if list[biggest] < list[i + 1]:
-                biggest = i + 1
+        for i in range(0, len(list)):
+            if list[biggest] < list[i]:
+                biggest = i
                 sorted = False
 
         if(sorted):

@@ -1,9 +1,5 @@
 def count_coins(coins):
-    count = 0
-    for i in coins:
-        count += i
-
-    return count
+    return sum([i for i in coins])
 
 
 def num_coins(numbers):
@@ -41,4 +37,5 @@ def check_weight(numbers):
 
     return weight
 
-print(check_weight([20, 10]))
+#print(check_weight([20, 10]))
+count_coins([20, 15, 10])

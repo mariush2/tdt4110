@@ -81,6 +81,7 @@ def get_legal_moves(board, x, y):
         return None
 
 
-print(board = make_board("rkn.r.p.....P..PP.PPB.K.."))
+board = make_board("rkn.r.p.....P..PP.PPB.K..")
+#print(make_board("rkn.r.p.....P..PP.PPB.K.."))
 print(get_piece(board, 4, 2))
-print(get_legal_moves(board, 4, 2))
+#print(get_legal_moves(board, 4, 2))

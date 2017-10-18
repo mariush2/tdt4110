@@ -8,9 +8,8 @@ def randList(size, lower, upper):
 
 
 def compareLists(list1, list2):
-    bigger = len(list1) > len(list2)
     while len(list1) != len(list2):
-        if(bigger):
+        if(len(list1) > len(list2)):
             #Must extend list2
             list2.append(None)
         else:
@@ -69,7 +68,7 @@ def longestEven(list):
         else:
             even_amount = 0
 
-    return biggest, start_index
+    return start_index, biggest
 
 
 def main():
