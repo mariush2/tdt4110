@@ -1,46 +1,46 @@
 {
 "people": {
 "person0": {
-"given_name": "Mark",
+"forname": "Mark",
 "surname": "Zuckerberg",
 "age": 32,
 "gender": "Male",
 "relationship_status": "Married"
 },
 "person1": {
-"given_name": "Therese",
+"forname": "Therese",
 "surname": "Johaug",
 "age": 28,
 "gender": "Female",
 "relationship_status": "Complicated"
 },
 "person2": {
-"given_name": "Mark",
+"forname": "Mark",
 "surname": "Wahlberg",
 "age": 45,
 "gender": "Male",
 "relationship_status": "Married"
 },
 "person3": {
-"given_name": "Siv",
+"forname": "Siv",
 "surname": "Jensen",
 "age": 47,
 "gender": "Female",
 "relationship_status": "Single"
 },
 "person4": {
-"given_name": "New",
-"surname": "User",
-"age": 23,
-"gender": "Male",
-"relationship_status": "Computer"
-},
-"person5": {
-"given_name": "Marius",
+"forname": "Marius",
 "surname": "Tobiassen",
 "age": 19,
 "gender": "Male",
 "relationship_status": "Single"
+},
+"person5": {
+"forname": "Donald",
+"surname": "Trump",
+"age": 57,
+"gender": "Male",
+"relationship_status": "Married"
 }
 }
 }

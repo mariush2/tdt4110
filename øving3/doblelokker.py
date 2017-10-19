@@ -35,5 +35,5 @@ def finn_primtall():
     print(primtall)
 
 
-#finn_primtall()
-lille_gangetabellen()
+finn_primtall()
+#lille_gangetabellen()

@@ -15,8 +15,9 @@ def get_info(facebook):
         i = 0
         for person in full_list.people.items():
             person = person[1]
+
             new_person = {}
-            new_person["given_name"] = person.given_name
+            new_person["forname"] = person.forname
             new_person["surname"] = person.surname
             new_person["age"] = person.age
             new_person["gender"] = person.gender
@@ -41,14 +42,55 @@ def add_data(user):
         user[2] = int(user[2])
 
         result = {}
-        result["given_name"] = user[0]
+        result["forname"] = user[0]
         result["surname"] = user[1]
         result["age"] = user[2]
         result["gender"] = user[3]
         result["relationship_status"] = user[4]
         return result
     except ValueError:
-        print("Du skrev inn noe feil!")
+        print("You wrote something wrong!")
+
+
+def delete(user):
+    global facebook
+    try:
+        result = get_person(user, facebook)
+        if(len(result) <= 0):
+            print("There is no person named", user, "on facebook.")
+        else:
+            #Show result and ask to delete each one (y/n)
+            delete = []
+            for person in result:
+                print("'"+ str(person["forname"]), person["surname"], person["age"], person["gender"], person["relationship_status"], "'is selected")
+                check = input("Delete?(y/n) ").lower()
+                if(check == "y"):
+                    delete.append(person)
+
+            for delete_num in delete:
+                for person in facebook:
+                    if(facebook[person]["forname"] == delete_num["forname"] and facebook[person]["surname"] == delete_num["surname"]):
+                        print("Deleted", delete_num["forname"], delete_num["surname"], "from facebook.")
+                        del facebook[person]
+                        break
+
+            i = 0
+            newList = {}
+            for person in facebook:
+                newPerson = {}
+                newPerson["forname"] = facebook[person]["forname"]
+                newPerson["surname"] = facebook[person]["surname"]
+                newPerson["age"] = facebook[person]["age"]
+                newPerson["gender"] = facebook[person]["gender"]
+                newPerson["relationship_status"] = facebook[person]["relationship_status"]
+
+                newList["person" + str(i)] = newPerson
+                i += 1
+
+            facebook = newList
+            print("Done deleting.")
+    except ValueError:
+        print("You wrote something wrong!")
 
 
 def get_person(given_name, facebook):
@@ -56,7 +98,8 @@ def get_person(given_name, facebook):
     given_name = given_name.lower()
     for person in facebook.items():
         person = person[1]
-        if(person["given_name"].lower() == given_name):
+        name = person["forname"].lower()
+        if(name == given_name):
             result.append(person)
 
     return result
@@ -64,6 +107,8 @@ def get_person(given_name, facebook):
 
 def main():
     get_info(facebook)
+    print("Welcome to FB in python!\nRemember to use this syntax for adding new people:\n'forname surname age gender relationshipstatus'")
+
     while True:
         new_user = input("Add new user: ")
         if(new_user.lower() == "done"):
@@ -76,7 +121,6 @@ def main():
         search_user = input("Search for user: ")
         if(search_user.lower() == "done"):
             print("Ok")
-            save_list(facebook)
             break
 
         result = get_person(search_user, facebook)
@@ -84,8 +128,16 @@ def main():
             print("No results!")
         else:
             for i in range(0, len(result)):
-                print(result[i]["given_name"],result[i]["surname"], "is", result[i]["age"], "years old. Relationship status is", result[i]["relationship_status"])
+                print(result[i]["forname"],result[i]["surname"], "is", result[i]["age"], "years old. Relationship status is", result[i]["relationship_status"])
 
+    while True:
+        delete_user = input("Delete user: ")
+        if(delete_user.lower() == "done"):
+            print("Ok")
+            save_list(facebook)
+            break
+
+        delete(delete_user)
 
 def save_list(facebook):
     __location__ = os.path.join(os.getcwd(), os.path.dirname(__file__))
