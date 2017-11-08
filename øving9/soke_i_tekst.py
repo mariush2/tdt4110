@@ -1,4 +1,5 @@
 import re
+import timeit
 #a
 def read_from_file(filename):
     try:
@@ -33,6 +34,11 @@ def count_words(filename):
             print(word,val)
     except:
         print("File not found!")
+
+
+
+
+start = timeit.default_timer()
 #a
 #read_from_file("meme.txt")
 #
@@ -41,3 +47,6 @@ def count_words(filename):
 #
 #c
 count_words("BIBLE.txt")
+
+stop = timeit.default_timer()
+print("\n"*5,"Ran in", stop - start)
